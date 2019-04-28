@@ -79,6 +79,5 @@ theme: diaspora2
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  # repo: root@118.25.173.124/:var/repo/hexo.git
   repo: https://github.com/ryanism37/JeanwayHwang.github.io.git
   branch: master
