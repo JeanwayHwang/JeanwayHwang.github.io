@@ -1,0 +1,149 @@
+.page-title
+    margin: 10px 0 30px
+    font-size: 2rem
+    font-weight: 600
+
+.tags-wrap,
+.gallery-wrap,
+.links-wrap,
+.about-wrap,
+.post-wrap
+    padding: 30px 0
+
+.tags-wrap
+    text-align: center
+
+.tag-link
+    display: inline-block
+    margin: 0 10px 20px 0
+    padding: 3px 10px
+    font-size: 1.4rem
+    color: #666
+    background-color: #eee
+    &:hover
+        background-color: #ea4334
+        color: #fff
+
+.tag-count
+    margin-left: 6px
+    &:before
+        content: "「"
+    &:after
+        content: "」"
+
+.gallery-wrap
+    > h2
+        padding-bottom: 12px
+        font-size: 3rem
+        font-weight: 600
+        letter-spacing: 1px
+    
+    > p
+        display: block
+        position: relative
+        margin: 12px 0 60px
+        width: 100%
+
+.gallery-item
+    position: relative
+    display: inline-block
+    margin: 0 16px 16px 0
+    width: calc(25% - 12px)
+    height: 132px
+    border-radius: 3px
+    box-shadow: 0 2px 5px rgba(0,0,100,0.1), 0 5px 15px 1px rgba(0,0,50,0.2)
+    overflow: hidden
+    cursor: zoom-in
+    img
+        display: block
+        position: absolute
+        top: 50%
+        left: 50%
+        width: 100%
+        transform: translate(-50%, -50%)
+    
+    &:hover
+        .img-mask
+            visibility: visible
+
+.gallery-item:nth-child(4n)
+    margin-right: 0
+
+.img-mask
+    position: absolute
+    top: 0
+    right: 0
+    bottom: 0
+    left: 0
+    visibility: hidden
+    pointer-events: none
+    background-image: linear-gradient(180deg, rgba(0,0,0,0.2) 0, rgba(0,0,0,0.199) 3.5%, rgba(0,0,0,0.195) 7%, rgba(0,0,0,0.19) 10.35%, rgba(0,0,0,0.182) 13.85%, rgba(0,0,0,0.174) 17.35%, rgba(0,0,0,0.165) 20.85%, rgba(0,0,0,0.155) 24.35%, rgba(0,0,0,0.145) 27.85%, rgba(0,0,0,0.135) 31.35%, rgba(0,0,0,0.126) 34.85%, rgba(0,0,0,0.118) 38.35%, rgba(0,0,0,0.11) 41.85%, rgba(0,0,0,0.105) 45.35%, rgba(0,0,0,0.1) 48.85%, rgba(0,0,0,0.103) 52.35%, rgba(0,0,0,0.112) 55.85%, rgba(0,0,0,0.126) 59.35%, rgba(0,0,0,0.144) 62.85%, rgba(0,0,0,0.165) 66.35%, rgba(0,0,0,0.188) 69.85%, rgba(0,0,0,0.213) 73.35%, rgba(0,0,0,0.237) 76.85%, rgba(0,0,0,0.262) 80.35%, rgba(0,0,0,0.285) 83.85%, rgba(0,0,0,0.306) 87.35%, rgba(0,0,0,0.324) 90.85%, rgba(0,0,0,0.338) 94.35%, rgba(0,0,0,0.347) 97.85%, rgba(0,0,0,0.35))
+
+.compensate-for-scrollbar
+    margin: 0 !important
+
+body.compensate-for-scrollbar
+    overflow: auto
+
+.about-wrap,
+.links-wrap
+    > p
+        margin: 16px 0
+    > ul
+        margin-left: 2em
+        padding: 0
+        li
+            list-style: circle
+
+.about-wrap,
+.links-wrap
+    font-size: 1.6rem
+    font-family: -apple-system, BlinkMacSystemFont, walsheim, "Noto Serif SC", serif
+
+.links-list
+    margin-top: 60px
+
+.link-item
+    display: inline-block
+    width: 31.666%
+    overflow: hidden
+    border: 1px solid #ececec
+    border-radius: 10px
+    margin: 0 20px 20px 0
+    transition: all 0.2s ease
+    color: #333
+    a
+        padding: 12px 30px
+        align-items: center
+        color: #333
+    
+    img
+        width: 66px
+        border-radius: 50%
+        border: 1px solid #aaa
+    &:hover
+        background-color: rgba(0,0,0,0.1)
+        border-color: #000
+
+.link-item:nth-child(3n)
+    margin-right: 0
+
+.about-wrap
+    h2
+        margin-bottom: 12px
+        border-bottom: 1px solid #000
+        font-size: 2.6rem
+        line-height: 1.8
+    
+    p
+        line-height: 30px
+    
+    a
+        color: #ea4334
+        border-bottom: 1px solid #ea4334
+
+#vcomments
+    margin-top: 40px
+
+.v .vinput
+    font-size: 1.4rem !important

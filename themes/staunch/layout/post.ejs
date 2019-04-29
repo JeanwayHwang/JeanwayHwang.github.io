@@ -1,0 +1,97 @@
+<article class="post-wrap container">
+    <header>
+        <h1><%= page.title %></h1>
+        <span><% if (page.author) { %><%= page.author %><% } else { %>原创：<%= config.author %><% } %>，<time datetime="<%= date_xml(page.date) %>"><%- date(page.date, 'YYYY [年] MM [月] D [日]') %>发布</time>，
+            <span id="busuanzi_container_page_pv"><span id="busuanzi_value_page_pv"></span> 人读过</span>
+        </span>
+    </header>
+    <div class="post-content">
+        <%- page.content %>
+    </div>
+    <div class="post-footer">
+        <div class="updated">
+            <svg xmlns="http://www.w3.org/2000/svg" width="130" height="20">
+                <linearGradient id="b" x2="0" y2="100%">
+                    <stop offset="0" stop-color="#bbb" stop-opacity=".1"></stop>
+                    <stop offset="1" stop-opacity=".1"></stop>
+                </linearGradient>
+                <clipPath id="a">
+                    <rect width="130" height="20" rx="3" fill="#fff"></rect>
+                </clipPath>
+                <g clip-path="url(#a)">
+                    <path fill="#555" d="M0 0h55v20H0z"></path>
+                    <path fill="#97CA00" d="M55 0h75v20H55z"></path>
+                    <path fill="url(#b)" d="M0 0h130v20H0z"></path>
+                </g>
+                <g fill="#fff" text-anchor="middle" font-family="Menlo,monospace" font-size="110">
+                    <text x="285" y="150" fill="#010101" fill-opacity=".3" textLength="450" transform="scale(.1)">updated</text>
+                    <text x="285" y="140" textLength="450" transform="scale(.1)">updated</text><text x="915" y="150" fill="#010101" fill-opacity=".3" textLength="650" transform="scale(.1)">2019-02-14</text>
+                    <text x="915" y="140" textLength="650" transform="scale(.1)"><%- date(page.updated, 'YYYY-MM-D') %></text>
+                </g>
+            </svg>
+        </div>
+        <div class="line">
+            <div class="post-tags">
+                <% page.tags.forEach(function (tag) { %>
+                    <a href="<%= config.root %>tags/<%= tag.name.replace(/\s+/g, '') %>/"><i class="iconfont">&#xe612;</i> <%- tag.name %></a>
+                <% }) %>
+            </div>
+        </div>
+        <% if (!page.author) { %>
+        <div class="reward">
+            <a id="rewardBtn" href="javascript:;">打赏</a>
+            <div class="mask"></div>
+            <div id="reward" class="reward-lay">
+                <a class="close" href="javascript:;" id="reward-close">×</a>
+                <span class="reward-title">
+                    <%= theme.reward.title %>
+                </span>
+                <div class="reward-content">
+                    <%
+                        var wechat = theme.reward.wechat;
+                        var alipay = theme.reward.alipay;
+                    %>
+                    <div class="reward-code">
+                        <img id="rewardCode" src="<%- url_for(wechat) %>" alt="打赏二维码">
+                    </div>
+                    <div class="reward-select">
+                        <% if(wechat) {%>
+                            <label class="reward-select-item checked" data-id="wechat" data-wechat="<%- url_for(wechat) %>">
+                                <img class="reward-select-item-wechat" src="<%- url_for('images/wechat.png') %>" alt="微信">
+                            </label>
+                        <% } %>
+                        <% if(alipay) {%>
+                            <label class="reward-select-item" data-id="alipay" data-alipay="<%- url_for(alipay) %>">
+                                <img class="reward-select-item-alipay" src="<%- url_for('images/alipay.png') %>" alt="支付宝">
+                            </label>
+                        <% } %>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <% } %>
+        <div class="post-nav layout-flex">
+            <div class="post-prev post-nav-item">
+                <% if (page.prev) { %>
+                    <a href="<%- url_for(page.prev.path) %>" title="<%- page.prev.title %>">
+                        <i class="iconfont">&#xe60f;</i>
+                        <%= page.prev.title %>
+                    </a>
+                <% } else { %>
+                    <span>无</span>
+                <% } %>
+            </div>
+            <div class="post-next post-nav-item">
+                <% if (page.next) { %>
+                    <a href="<%- url_for(page.next.path) %>" title="<%- page.next.title %>">
+                        <%= page.next.title %>
+                        <i class="iconfont">&#xe610;</i>
+                    </a>
+                <% } else { %>
+                    <span>无</span>
+                <% } %>
+            </div>
+        </div>
+    </div>
+    <%- partial('_partial/valine') %>
+</article>

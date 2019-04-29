@@ -1,0 +1,33 @@
+<header class="header">
+    <div class="container layout-flex">
+        <div class="page-tit">
+            <% if (is_home()) { %>
+                <a href="/"><%= __('home')  %></a>
+            <% } else if (is_archive()) { %>
+                <a href=""><%= __('archive') %></a>
+            <% } else if (is_post()) { %>
+                <% page.categories.forEach(function (category) { %>
+                    <a href="<%= config.root %>categories/<%= category.name.replace(/\s+/g, '') %>/">归类于：<%- category.name %></a>
+                <% }) %>
+            <% } else if (is_category()) { %>
+                <a href=""><%= page.category %></a>
+            <% } else if (is_tag()) { %>
+                <a href="" class="iconfont">&#xe612; <%= page.tag %></a>
+            <% } else { %>
+                <a href=""><%= page.title %></a>
+            <% } %>
+        </div>
+        <div class="header-other">
+            <div class="social">
+                <% for (var i in theme.social) { %>
+                    <a title="<%= i %>" href="<%- url_for(theme.social[i].url) %>" target="_blank"><i class="iconfont"><%- theme.social[i].icon %></i></a>
+                <% } %>
+            </div>
+            <div class="system">
+                <a class="rss-btn" title="<%= __('rss') %>" href="/atom.xml" target="_blank"><i class="iconfont">&#xe6ee;</i></a>
+                <a id="expand" class="expand-btn" title="<%= __('expand') %>" href="javascript:;"><i class="iconfont">&#xe657;</i></a>
+                <a id="smaller" class="smaller-btn" title="<%= __('smaller') %>" href="javascript:;"><i class="iconfont">&#xe603;</i></a>
+            </div>
+        </div>
+    </div>
+</header>

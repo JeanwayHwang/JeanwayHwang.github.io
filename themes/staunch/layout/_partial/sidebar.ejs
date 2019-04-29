@@ -1,0 +1,19 @@
+<div class="sidebar">
+    <div class="mask-black"></div>
+    <div id="sidebar-bg" class="">
+        <div class="nav-wrap">
+            <a id="nav-btn" href="javascript:;"><i class="iconfont">&#xe67c;</i></a>
+            <% if (!is_home()) { %>
+                <a href="/"><i class="iconfont">&#xe611;</i><span><%= __('home') %></span></a>
+            <% } %>
+            <% for (var i in theme.menu) { %>
+                <a href="<%- url_for(theme.menu[i].url) %>"><i class="iconfont"><%- theme.menu[i].icon %></i><span><%= i %></span></a>
+            <% } %>
+        </div>
+        <div class="author-info">
+            <img src="<%= theme.avatar %>" alt="<%= config.author %>">
+            <h2><%= config.author %></h2>
+            <span><%= config.subtitle %></span>
+        </div>
+    </div>    
+</div>

@@ -1,0 +1,24 @@
+<div id="<%= page.type %>" class="<%= page.type %>-wrap container">
+    <% if (page.type == 'tags') { %>
+        <h2 class="page-title">目前共计<%= site.tags.length %>个标签</h2>
+        <%- list_tags({
+            style: 'none',
+            separator: ''
+        }) %>
+    <% } else { %>
+        <%- page.content %>
+    <% } %>
+    <% if (page.type == 'links') { %>
+        <div class="links-list">
+            <% for (var i in theme.links) { %>
+                <div class="link-item">
+                    <a href="<%= theme.links[i].url %>" class="layout-flex" target="_blank">
+                        <span><%= i %></span>
+                        <img src="<%= theme.links[i].img %>" alt="">
+                    </a>
+                </div>
+            <% } %>
+        </div>
+    <% } %>
+    <%- partial('_partial/valine') %>
+</div>

@@ -1,0 +1,22 @@
+<div class="archive-wrap container">
+    <% var yearlast, monthlast; %>
+    <% page.posts.each(function(post, i) { %>
+        <% if (is_archive()) { %>
+            <% var year = post.date.year();
+            var month = post.date.month();
+            %>
+            <% if (yearlast != year) { %>
+                <% yearlast = year; %>
+                <h2 class="archive-year"><%= year %><%- partial('_partial/chinese-zodiac', {year: year}) %></h2>
+            <% } %>
+            <% if (monthlast != month) { %>
+                <% monthlast = month; %>
+                <% month = date(post.date, 'MM') %>
+                <h3 class="archive-month"><%= month %> 月</h3>
+        <% }} %>
+        <h3 class="archive-post-item" itemprop="name">
+            <time datetime="<%= date_xml(post.date) %>"><%- post.date.format('DD') %>日：</time>
+            <a class="archive-tit" href="<%- url_for(post.path) %>"><%= post.title %></a>
+        </h3>
+    <% }) %>
+</div>

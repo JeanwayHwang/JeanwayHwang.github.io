@@ -1,0 +1,32 @@
+<div class="index-wrap container">
+    <% page.posts.each(function (post) { %>
+        <article class="index-post layout-flex">
+            <% if (post.link || post.title) { %>
+                <header class="post-header">
+                    <h2 class="post-tit">
+                        <a href="<%- url_for(post.path) %>"><%= post.title %></a>
+                    </h2>
+                    <p><%- post.excerpt ? post.excerpt : truncate(strip_html(post.content), {length: theme.excerpt_length}) %></p>
+                    <span>
+                        <time datetime="<%= date_xml(post.date) %>"><%- date(post.date, 'YYYY [年] MM [月] D [日]') %>发布</time> | 
+                        <% post.categories.forEach(function (category) { %>
+                            <a href="<%= config.root %>categories/<%= category.name.replace(/\s+/g, '') %>/"><%- category.name %></a>
+                        <% }) %>
+                    </span>
+                </header>
+                <a href="<%- url_for(post.path) %>" class="post-thumbnail" style="background-image: url(<%= post.img %>)"></a>
+            <% } %>
+        </article>
+    <% }) %>
+    <% if (page.total > 1) { %>
+    <div class="paginator">
+        <%- paginator({
+            end_size: 0,
+            mid_size: 0,
+            space: '',
+            next_text: __('next_text'),
+            prev_text: __('prev_text')
+        }) %>
+    </div>
+    <% } %>
+</div>

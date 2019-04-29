@@ -1,0 +1,80 @@
+<%
+    var title = page.title;
+
+    if (is_archive()) {
+        title = __('archive') || 'Archives';
+
+        if (is_month()) {
+            title += ': ' + page.year + '/' + page.month;
+        } else if (is_year()) {
+            title += ': ' + page.year;
+        }
+    } else if (is_category()) {
+        title = (__('categories') || 'Categories') + ': ' + page.category;
+    } else if (is_tag()) {
+        title = (__('tags') || 'Tags') + ': ' + page.tag;
+    }
+%>
+<head>
+    <title><% if (title){ %><%= title %> - <% } %><%= config.title %><% if (config.subtitle && is_home()){ %> - <%= config.subtitle %><% } %></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="<%= config.title%>">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <% if(page.keywords){ %>
+        <meta name="keywords" content="<%= page.keywords %>" />
+    <% } else if(page.tags && page.tags.length) { %>
+        <meta name="keywords" content="<% page.tags.forEach(function (item,index) { %><%= item.name%><% if(index + 1 != page.tags.length){%>,<%}%><% }) %>" />
+    <% } else { %>
+        <meta name="keywords" content="<%= config.keywords %>" />
+    <% } %>
+    <% if (page.content) { %>
+        <meta name="description" content="<%- truncate(strip_html(page.content), {length: 100 }) %>" />
+    <% } else { %>
+        <meta name="description" content="<%= config.description%>" />
+    <% } %>
+
+    <link rel="alternate" href="/atom.xml" title="<%= config.title %>" type="application/atom+xml">
+    <%- favicon_tag(theme.favicon) %>
+
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?7858c75a64627ae177539e82bd12b269";
+            var s = document.getElementsByTagName("script")[0]; 
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+    <script>
+        (function(){
+            var bp = document.createElement('script');
+            var curProtocol = window.location.protocol.split(':')[0];
+            if (curProtocol === 'https') {
+                bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+            }
+            else {
+                bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+            }
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(bp, s);
+        })();
+    </script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-110079337-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-110079337-1');
+    </script>
+    <link href="https://fonts.loli.net/css?family=Noto+Serif+SC" rel="stylesheet">
+    <% if (page.type == 'gallery') { %>
+        <link href="/css/jquery.fancybox.min.css" rel="stylesheet">
+    <% } %>
+    <link href="/css/style.css" rel="stylesheet">
+</head>

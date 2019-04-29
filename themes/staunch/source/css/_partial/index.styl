@@ -1,0 +1,80 @@
+.index-wrap
+    padding: 30px 0
+
+.post-tit
+    margin: 0 0 8px
+    font-size: 2.2rem
+    font-weight: 600
+    > a
+        color: #333
+
+.index-post
+    position: relative
+    width: 100%
+    padding: 20px 0 40px
+    .post-header
+        width: 66.666%
+        margin-bottom: 30px
+        > p
+            margin: 0 0 16px
+            font-size: 1.6rem
+            text-align: justify
+            color: #555
+        
+        > span
+            font-size: 1.4rem
+            color: #888
+            > a
+                color: #888
+                &:hover
+                    text-decoration: underline
+    
+    .post-thumbnail
+        display: block
+        margin-left: 60px
+        border-radius: 3px
+        width: 25%
+        height: 125px
+        background-size: cover
+        background-position: 50%
+        box-shadow: 0 2px 5px rgba(0,0,100,0.1), 0 5px 15px 1px rgba(0,0,50,0.2)
+
+.paginator
+    .page-number
+        display: none
+    
+    .extend
+        position: relative
+        padding: 0 30px
+        font-size: 1.6rem
+        border: 1px solid #ddd
+        border-radius: 5px
+        background-color: #fff
+        box-shadow: 0 2px 2px rgba(0,0,0,0.05), 0 10px 75px 0 rgba(0,0,75,0.125)
+        transition: background-color .3s ease-out,box-shadow .5s ease-out
+        transition-delay: .1s
+        display: inline-block
+        height: 50px
+        line-height: 50px
+        overflow: hidden
+        color: #333
+        &:hover
+            box-shadow: 0 3px 5px rgba(0,0,0,0.05), 0 5px 120px 0 rgba(0,0,50,0.35)
+    
+    .prev
+        margin-right: 30px
+    
+    .next:after,
+    .prev:before
+        font-family: 'iconfont'
+        font-style: normal
+        font-size: 1.2rem
+        line-height: 50px
+    
+    .next:after
+        content: '\ef17'
+        margin-left: 6px
+    
+    .prev:before
+        content: '\ef18'
+        margin-right: 6px

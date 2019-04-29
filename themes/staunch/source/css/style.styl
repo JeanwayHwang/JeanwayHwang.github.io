@@ -1,0 +1,63 @@
+@import "fonts"
+@import "nib"
+
+*,
+*::before,
+*::after
+    box-sizing: border-box
+
+html
+    font-size: 62.5%
+    -webkit-text-size-adjust: 100%
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0)
+
+article, aside, figcaption, figure, footer, header, hgroup, main, nav, section 
+    display: block
+
+body
+    margin: 0
+    font-family: -apple-system, BlinkMacSystemFont, walsheim, Arial, "Microsoft YaHei", sans-serif
+    font-size: 1rem
+    font-weight: 400
+    line-height: 1.5
+    color: #212529
+    background-color: #fafbff
+
+a
+    color: #007bff
+    text-decoration: none
+    background-color: transparent
+
+.wrap
+    position: relative
+    width: 100%
+
+.main-wrap
+    position: relative
+    margin-left: 28%
+    overflow: hidden
+
+.container
+    position: relative
+    margin: 0 auto
+    width: 90%
+
+.layout-flex
+    display: flex
+    justify-content: space-between
+
+h1,h2,h3,h4,h5,h6
+    margin: 0
+    font-weight: normal
+
+img
+    max-width: 100%
+
+@import "_partial/sidebar"
+@import "_partial/header"
+@import "_partial/index"
+@import "_partial/footer"
+@import "_partial/archive"
+@import "_partial/page"
+@import "_partial/post"
+@import "_partial/responsive"

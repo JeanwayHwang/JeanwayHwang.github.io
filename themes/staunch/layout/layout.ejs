@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="<%= config.language %>">
+    <%- partial('_partial/head') %>
+    <body>
+        <div class="wrap">
+            <%- partial('_partial/sidebar') %>
+            <div class="main-wrap">
+                <%- partial('_partial/header') %>
+                <%- body %>
+                <%- partial('_partial/footer') %>
+            </div>
+        </div>
+        <%- partial('_partial/script') %>
+    </body>
+</html>

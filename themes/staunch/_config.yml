@@ -1,0 +1,67 @@
+
+avatar: /images/avatar.gif
+
+menu:
+  archives:
+    url: /archives
+    icon: '&#xe61b;'
+  tags:
+    url: /tags
+    icon: '&#xe601;'
+  gallery:
+    url: /gallery
+    icon: '&#xe7be;'
+  links:
+    url: /links
+    icon: '&#xe600;'
+  about:
+    url: /about
+    icon: '&#xe61e;'
+
+social:
+  Github:
+    url: https://github.com/JeanwayHwang
+    icon: '&#xe8ef;'
+  QQ:
+    url: tencent://AddContact/?fromId=45&fromSubId=1&subcmd=all&uin=337677313
+    icon: '&#xe602;'
+  Mail:
+    url: mailto:337677313@qq.com
+    icon: '&#xe959;'
+
+excerpt_length: 80
+
+links:
+  MonoLogueChi: 
+    img: https://oss.xxwhite.com/static/avatar.jpg
+    url: //www.xxwhite.com
+  ChungZH:
+    img: //gravatar.loli.net/avatar/109f786338b149233c44af8d203da6d2?d=mp&v=1.3.4
+    url: //chungzh.cn
+  幻凡ss:
+    img: //cn.gravatar.com/avatar/a8a4227a949e22d55fcfcd559e834590?s=128&d=identicon&r=PG
+    url: //hfanss.com
+  Yi-Yun:
+    img: //yiyun-1253940215.cos.ap-shanghai.myqcloud.com/IMG_5839.jpg
+    url: //yi-yun.github.io
+
+favicon: /images/favicon.ico
+
+# Valine评论系统 & LeanCloud平台的应用Key
+Valine:
+  api_id: 'wtJpPCFTapMP0bD2NRIJTS4m-gzGzoHsz'
+  api_key: 'pl9EsSB2Q3cAn2qi834I12tJ'
+  placeholder: '谈天说地'
+
+reward:
+  # 0-关闭, 1-所有文章均有打赏, 2-文章的md文件里有reward:true属性，才有打赏
+  status: 1
+  # 标题
+  title: 感谢认可，么么哒！
+  # 微信，关闭设为 false
+  wechat: images/wxpay_code.jpg
+  # 支付宝，关闭设为 false
+  alipay: images/alipay_code.jpg
+
+copyright: '© 2019 JeanwayHwang All Rights Reserved'
+icp: '滇ICP备18008444号-1'
