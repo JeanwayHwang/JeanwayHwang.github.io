@@ -8,7 +8,7 @@
                     </h2>
                     <p><%- post.excerpt ? post.excerpt : truncate(strip_html(post.content), {length: theme.excerpt_length}) %></p>
                     <span>
-                        <time datetime="<%= date_xml(post.date) %>"><%- date(post.date, 'YYYY [年] MM [月] D [日]') %>发布</time> | 
+                        <time datetime="<%= date_xml(post.date) %>"><%- date(post.date, 'YYYY[年]MM[月]D[日]') %>发布</time> | 
                         <% post.categories.forEach(function (category) { %>
                             <a href="<%= config.root %>categories/<%= category.name.replace(/\s+/g, '') %>/"><%- category.name %></a>
                         <% }) %>
