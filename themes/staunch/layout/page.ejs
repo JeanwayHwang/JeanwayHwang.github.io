@@ -20,5 +20,7 @@
             <% } %>
         </div>
     <% } %>
-    <%- partial('_partial/valine') %>
+    <% if (page.type !== 'about') { %>
+        <%- partial('_partial/valine') %>
+    <% } %>
 </div>

@@ -118,4 +118,7 @@ $(function () {
     Blog.layout();
     Blog.reward();
     Blog.postImg();
+    $(window).resize(function() {
+        Blog.layout();
+    });
 });
