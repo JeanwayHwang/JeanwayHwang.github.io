@@ -1,8 +1,10 @@
 <article class="post-wrap container">
     <header>
         <h1><%= page.title %></h1>
-        <span><% if (page.author) { %><%= page.author %><% } else { %>原创：<%= config.author %><% } %>，<time datetime="<%= date_xml(page.date) %>"><%- date(page.date, 'YYYY [年] MM [月] D [日]') %>发布</time>，
-            <span id="busuanzi_container_page_pv"><span id="busuanzi_value_page_pv"></span> 人读过</span>
+        <span>
+            <% if (page.author) { %><%= page.author %><% } else { %>原创：<%= config.author %><% } %> &nbsp;
+            <time datetime="<%= date_xml(page.date) %>"><%- date(page.date, 'YYYY[年]MM[月]D[日]') %>发布</time>&nbsp;&nbsp;
+            <span id="busuanzi_container_page_pv"><span id="busuanzi_value_page_pv"></span>人读过</span>
         </span>
     </header>
     <div class="post-content">
@@ -24,8 +26,7 @@
                     <path fill="url(#b)" d="M0 0h130v20H0z"></path>
                 </g>
                 <g fill="#fff" text-anchor="middle" font-family="Menlo,monospace" font-size="110">
-                    <text x="285" y="150" fill="#010101" fill-opacity=".3" textLength="450" transform="scale(.1)">updated</text>
-                    <text x="285" y="140" textLength="450" transform="scale(.1)">updated</text><text x="915" y="150" fill="#010101" fill-opacity=".3" textLength="650" transform="scale(.1)">2019-02-14</text>
+                    <text x="285" y="140" textLength="450" transform="scale(.1)">updated</text>
                     <text x="915" y="140" textLength="650" transform="scale(.1)"><%- date(page.updated, 'YYYY-MM-D') %></text>
                 </g>
             </svg>
