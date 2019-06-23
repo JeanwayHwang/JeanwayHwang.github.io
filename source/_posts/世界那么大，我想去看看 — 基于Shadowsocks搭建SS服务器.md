@@ -9,7 +9,7 @@ tags:
 categories:
   - 网络
 urlname: shadowsocks
-img: http://pqpwr348b.bkt.clouddn.com/vpn2.jpg
+img: https://huangzhenwei.cn/images/blog/vpn.jpg
 ---
 
 # 科学上网
@@ -108,5 +108,4 @@ service iptables restart
 * 新增服务器设置
 * 填写IP、端口及密码（需与上述搭建SS服务器中shadowsocks.json的配置保持一致）
 
-![客户端配置步骤](http://pqpwr348b.bkt.clouddn.com/shadowsocks-client.jpg '客户端配置步骤')
-
+![客户端配置步骤](https://huangzhenwei.cn/images/blog/shadowsocks-client.png '客户端配置步骤')
