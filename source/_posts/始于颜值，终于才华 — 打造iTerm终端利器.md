@@ -9,7 +9,7 @@ tags:
 categories:
   - 工具
 urlname: oh-my-zsh
-img: https://huangzhenwei.cn/images/blog/iterm.png
+img: https://huangzhenwei.cn/img/blog/iterm.png
 ---
 
 工欲善其事，必先利其器。——《论语》
@@ -94,7 +94,7 @@ $ source ~/.zshrc
 
 这款插件除了可以自动提示linux指令、参数外，还能在目录切换后自动展示该目录下的文件夹，非常的方便、高效。
 
-![插件演示](https://huangzhenwei.cn/images/blog/zsh.png '插件演示')
+![插件演示](https://huangzhenwei.cn/img/blog/zsh.png '插件演示')
 
 下载此插件：
 ```bash
@@ -127,8 +127,8 @@ iterm2 -> Preferences -> Profiles -> window -> Background Image
 
 iTerm2原始效果：
 
-![iTerm2原始效果](https://huangzhenwei.cn/images/blog/iterm2.png 'iTerm2原始效果')
+![iTerm2原始效果](https://huangzhenwei.cn/img/blog/iterm2.png 'iTerm2原始效果')
 
 最终效果：
 
-![最终效果图](https://huangzhenwei.cn/images/blog/iterm.png '最终效果图')
+![最终效果图](https://huangzhenwei.cn/img/blog/iterm.png '最终效果图')
