@@ -132,3 +132,18 @@ iTerm2原始效果：
 最终效果：
 
 ![最终效果图](https://huangzhenwei.cn/img/blog/iterm.png '最终效果图')
+
+# 附录：终端快捷键
+
+- 新建标签：`cmd + t `
+- 删除标签：`cmd + w`
+- 垂直分屏：`cmd + d`
+- 水平分屏：`cmd + shift + d`
+- 查看历史命令：`cmd + ;`
+- 查看剪切板历史：`cmd + shift + h`
+- 清空当前行：`ctrl + u`
+- 到行首：`ctrl + a`
+- 到行尾：`ctrl + e`
+- 删除到行尾：`ctrl + k`
+- 清屏：`cmd + r`
+- 放大/缩小终端窗口：`cmd + +/-`
