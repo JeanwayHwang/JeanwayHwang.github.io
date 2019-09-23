@@ -2,7 +2,6 @@
 title: 世界那么大，我想去看看 — 基于Shadowsocks搭建SS服务器
 date: 2018-05-01 00:08
 tags:
-  - 翻墙
   - 网络
   - Shadowsocks
   - 服务器
@@ -13,7 +12,7 @@ img: https://huangzhenwei.cn/img/blog/vpn.jpg
 ---
 
 # 科学上网
-科学上网=翻墙=利用技术手段能够访问在中国被GFW禁止/过滤掉而无法访问的网站
+科学上网=利用技术手段能够访问在中国被GFW禁止/过滤掉而无法访问的网站
 > 注：GFW=Great Firewall (of China)=防火长城=中国国家防火墙，简称：墙
 
 # 如何科学上网
