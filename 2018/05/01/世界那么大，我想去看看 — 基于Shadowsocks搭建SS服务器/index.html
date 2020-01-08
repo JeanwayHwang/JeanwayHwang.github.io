@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    
+<head><meta name="generator" content="Hexo 3.8.0">
+    <title>世界那么大，我想去看看 — 基于Shadowsocks搭建SS服务器 - Jeanway Hwang</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="Jeanway Hwang">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    
+        <meta name="keywords" content="网络,Shadowsocks,服务器">
+    
+    
+        <meta name="description" content="科学上网科学上网=利用技术手段能够访问在中国被GFW禁止/过滤掉而无法访问的网站
+
+注：GFW=Great Firewall (of China)=防火长城=中国国家防火墙，简称：墙
+
+如何科学...">
+    
+
+    <link rel="alternate" href="/atom.xml" title="Jeanway Hwang" type="application/atom+xml">
+    <link rel="shortcut icon" href="/images/favicon.ico">
+
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?7858c75a64627ae177539e82bd12b269";
+            var s = document.getElementsByTagName("script")[0]; 
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+    <script>
+        (function(){
+            var bp = document.createElement('script');
+            var curProtocol = window.location.protocol.split(':')[0];
+            if (curProtocol === 'https') {
+                bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+            }
+            else {
+                bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+            }
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(bp, s);
+        })();
+    </script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-110079337-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-110079337-1');
+    </script>
+    <link href="https://fonts.loli.net/css?family=Noto+Serif+SC" rel="stylesheet">
+    
+    <link href="/css/style.css" rel="stylesheet">
+</head>
+    <body>
+        <div class="wrap">
+            <div class="sidebar">
+    <div class="mask-black"></div>
+    <div id="sidebar-bg" class>
+        <div class="nav-wrap">
+            <a id="nav-btn" href="javascript:;"><i class="iconfont">&#xe67c;</i></a>
+            
+                <a href="/"><i class="iconfont">&#xe611;</i><span>HOME</span></a>
+            
+            
+                <a href="/archives"><i class="iconfont">&#xe61b;</i><span>archives</span></a>
+            
+                <a href="/tags"><i class="iconfont">&#xe601;</i><span>tags</span></a>
+            
+                <a href="/gallery"><i class="iconfont">&#xe7be;</i><span>gallery</span></a>
+            
+                <a href="/links"><i class="iconfont">&#xe600;</i><span>links</span></a>
+            
+                <a href="/about"><i class="iconfont">&#xe61e;</i><span>about</span></a>
+            
+        </div>
+        <div class="author-info">
+            <img src="/images/avatar.gif" alt="Jeanway Hwang">
+            <h2>Jeanway Hwang</h2>
+            <span>Festina Lente</span>
+        </div>
+    </div>    
+</div>
+            <div class="main-wrap">
+                <header class="header">
+    <div class="container layout-flex">
+        <div class="page-tit">
+            
+                
+                    <a href="/categories/网络/">归类于：网络</a>
+                
+            
+        </div>
+        <div class="header-other">
+            <div class="social">
+                
+                    <a title="Github" href="https://github.com/JeanwayHwang" target="_blank"><i class="iconfont">&#xe8ef;</i></a>
+                
+                    <a title="QQ" href="tencent://AddContact/?fromId=45&fromSubId=1&subcmd=all&uin=337677313" target="_blank"><i class="iconfont">&#xe602;</i></a>
+                
+                    <a title="Mail" href="mailto:337677313@qq.com" target="_blank"><i class="iconfont">&#xe959;</i></a>
+                
+            </div>
+            <div class="system">
+                <a class="rss-btn" title="订阅 RSS" href="/atom.xml" target="_blank"><i class="iconfont">&#xe6ee;</i></a>
+                <a id="expand" class="expand-btn" title="全面浏览" href="javascript:;"><i class="iconfont">&#xe657;</i></a>
+                <a id="smaller" class="smaller-btn" title="退出全屏" href="javascript:;"><i class="iconfont">&#xe603;</i></a>
+            </div>
+        </div>
+    </div>
+</header>
+                <article class="post-wrap container">
+    <header>
+        <h1>世界那么大，我想去看看 — 基于Shadowsocks搭建SS服务器</h1>
+        <span>
+            原创：Jeanway Hwang &nbsp;
+            <time datetime="2018-05-01T00:08:00.000Z">2018年05月1日发布</time>&nbsp;&nbsp;
+            <span id="busuanzi_container_page_pv"><span id="busuanzi_value_page_pv"></span>人读过</span>
+        </span>
+    </header>
+    <div class="post-content">
+        <h1 id="科学上网"><a href="#科学上网" class="headerlink" title="科学上网"></a>科学上网</h1><p>科学上网=利用技术手段能够访问在中国被GFW禁止/过滤掉而无法访问的网站</p>
+<blockquote>
+<p>注：GFW=Great Firewall (of China)=防火长城=中国国家防火墙，简称：墙</p>
+</blockquote>
+<h1 id="如何科学上网"><a href="#如何科学上网" class="headerlink" title="如何科学上网"></a>如何科学上网</h1><p>Step1.购买VPS服务器</p>
+<p>Step2.部署VPS服务器</p>
+<p>Step3.下载&amp;配置SSR/SS客户端</p>
+<h1 id="Shadowsocks运行原理"><a href="#Shadowsocks运行原理" class="headerlink" title="Shadowsocks运行原理"></a>Shadowsocks运行原理</h1><blockquote>
+<p>Shadowsocks（简称SS）是一种基于Socks5代理方式的加密传输协议，也可以指实现这个协议的各种开发包。 ——维基百科</p>
+</blockquote>
+<p>Shadowsocks的运行原理与其他代理工具基本相同，使用特定的中转服务器完成数据传输。例如用户无法直接访问Google但代理服务器可以访问，且用户可以直接连接代理服务器，那么用户就可以通过特定软件连接代理服务器，然后由代理服务器获取网站内容并回传给用户，从而实现代理上网的效果。</p>
+<h2 id="Step1-购买VPS服务器"><a href="#Step1-购买VPS服务器" class="headerlink" title="Step1.购买VPS服务器"></a>Step1.购买VPS服务器</h2><p><a href="https://bwh88.net" target="_blank" rel="noopener">搬瓦工</a>是个不错的选择，我在18年末购买的时候年付才19美元不到，性价比高而且支持支付宝购买，还是比较方便的。</p>
+<h2 id="Step2-部署VPS服务器"><a href="#Step2-部署VPS服务器" class="headerlink" title="Step2.部署VPS服务器"></a>Step2.部署VPS服务器</h2><p>1、安装CentOS系统<br>2、登录服务器<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh root@144.34.240.219 -p 26512</span><br></pre></td></tr></table></figure></p>
+<p>3、安装setuptools和pip<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">yum install -y python-setuptools</span><br><span class="line">easy_install pip // Pip是安装Python包的工具，提供了和easy_install相同的功能</span><br><span class="line">// 注：安装Pip前必须先安装setuptools，安装setuptools前必须先安装Python，CentOS6.5默认安装的Python版本是2.6.6</span><br></pre></td></tr></table></figure></p>
+<p>5、安装shadowsocks<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install shadowsocks</span><br></pre></td></tr></table></figure></p>
+<p>6、修改配置文件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/shadowsocks.json</span><br><span class="line">&#123;</span><br><span class="line">    &quot;server&quot;:&quot;144.34.240.219&quot;, // 服务器 IP (IPv4/IPv6)，注意这也将是服务端监听的 IP 地址</span><br><span class="line">    &quot;server_port&quot;:26512, // 监听的服务器端口</span><br><span class="line">    &quot;local_address&quot;: &quot;127.0.0.1&quot;, // 本地监听的 IP 地址</span><br><span class="line">    &quot;local_port&quot;:3000, // 本地端端口</span><br><span class="line">    &quot;port_password&quot;:&#123; // 加密密码</span><br><span class="line">        &quot;3001&quot;:&quot;123456&quot;,</span><br><span class="line">        &quot;3002&quot;:&quot;888000&quot;</span><br><span class="line">    &#125;,</span><br><span class="line">    &quot;timeout&quot;:600, // 超时时间（秒）</span><br><span class="line">    &quot;method&quot;:&quot;aes-256-cfb&quot;, // 加密方法，可选择 “bf-cfb”, “aes-256-cfb”, “des-cfb”, “rc4”, 等等。默认是一种不安全的加密，推荐用 “aes-256-cfb”</span><br><span class="line">    &quot;fast_open&quot;: false, // 如果你的服务器 Linux 内核在3.7+，可以开启 fast_open 以降低延迟</span><br><span class="line">    &quot;workers&quot;: 1 // works数量，默认为 1</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>7、安装M2Crypto<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">// 默认加密方法table速度很快但很不安全，推荐使用aes-256-cfb或bf-cfb，请勿使用不安全的rc4。若选择table之外的加密，需要安装M2Crypto</span><br><span class="line">yum install -y openssl-devel gcc swig python-devel autoconf libtool</span><br><span class="line">pip install M2Crypto</span><br></pre></td></tr></table></figure></p>
+<p>8、安装gevent（提升shadowsocks性能）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">yum install -y libevent</span><br><span class="line">pip install greenlet</span><br><span class="line">pip install gevent / pip install gevent==1.1b5</span><br></pre></td></tr></table></figure></p>
+<p>9、后台启动服务<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ssserver -c /etc/shadowsocks.json // 当下运行</span><br><span class="line">nohup ssserver -c /etc/shadowsocks.json &gt; /dev/null 2&gt;&amp;1 &amp; // // 在后台一直运行Shadowsocks</span><br></pre></td></tr></table></figure></p>
+<p>10、 防火墙设置（如有）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// 编辑防火墙配置文件/etc/sysconfig/iptables，将服务器端口（server_port）放行</span><br><span class="line">// 新增一条防火墙规则：</span><br><span class="line">-A INPUT -m state --state NEW -m tcp -p tcp --dport 8989 -j ACCEPT</span><br><span class="line"></span><br><span class="line">// 重启防火墙iptables</span><br><span class="line">service iptables restart</span><br></pre></td></tr></table></figure></p>
+<p>至此，一个SS服务器的搭建和启动就宣告成功了！</p>
+<h2 id="Step3-下载-amp-配置SSR-SS客户端"><a href="#Step3-下载-amp-配置SSR-SS客户端" class="headerlink" title="## Step3.下载&amp;配置SSR/SS客户端"></a>## Step3.下载&amp;配置SSR/SS客户端</h2><p>以Mac为例，可以使用<a href="https://github.com/shadowsocksr-backup/ShadowsocksX-NG/releases" target="_blank" rel="noopener">ShadowsocksX-NG</a>，在其Github主页可以下载安装包进行安装。</p>
+<p>配置过程非常简单，基本过程如下：</p>
+<ul>
+<li>启动应用</li>
+<li>下拉菜单栏启动自动模式</li>
+<li>新增服务器设置</li>
+<li>填写IP、端口及密码（需与上述搭建SS服务器中shadowsocks.json的配置保持一致）</li>
+</ul>
+<p><img src="https://huangzhenwei.cn/img/blog/shadowsocks-client.png" alt="客户端配置步骤" title="客户端配置步骤"></p>
+
+    </div>
+    <div class="post-footer">
+        <div class="updated">
+            <svg xmlns="http://www.w3.org/2000/svg" width="130" height="20">
+                <lineargradient id="b" x2="0" y2="100%">
+                    <stop offset="0" stop-color="#bbb" stop-opacity=".1"/>
+                    <stop offset="1" stop-opacity=".1"/>
+                </lineargradient>
+                <clippath id="a">
+                    <rect width="130" height="20" rx="3" fill="#fff"/>
+                </clippath>
+                <g clip-path="url(#a)">
+                    <path fill="#555" d="M0 0h55v20H0z"/>
+                    <path fill="#97CA00" d="M55 0h75v20H55z"/>
+                    <path fill="url(#b)" d="M0 0h130v20H0z"/>
+                </g>
+                <g fill="#fff" text-anchor="middle" font-family="Menlo,monospace" font-size="110">
+                    <text x="285" y="140" textlength="450" transform="scale(.1)">updated</text>
+                    <text x="915" y="140" textlength="650" transform="scale(.1)">2020-01-8</text>
+                </g>
+            </svg>
+        </div>
+        <div class="line">
+            <div class="post-tags">
+                
+                    <a href="/tags/网络/"><i class="iconfont">&#xe612;</i> 网络</a>
+                
+                    <a href="/tags/Shadowsocks/"><i class="iconfont">&#xe612;</i> Shadowsocks</a>
+                
+                    <a href="/tags/服务器/"><i class="iconfont">&#xe612;</i> 服务器</a>
+                
+            </div>
+        </div>
+        
+        <div class="reward">
+            <a id="rewardBtn" href="javascript:;">打赏</a>
+            <div class="mask"></div>
+            <div id="reward" class="reward-lay">
+                <a class="close" href="javascript:;" id="reward-close">×</a>
+                <span class="reward-title">
+                    感谢认可，么么哒！
+                </span>
+                <div class="reward-content">
+                    
+                    <div class="reward-code">
+                        <img id="rewardCode" src="/images/wxpay_code.jpg" alt="打赏二维码">
+                    </div>
+                    <div class="reward-select">
+                        
+                            <label class="reward-select-item checked" data-id="wechat" data-wechat="/images/wxpay_code.jpg">
+                                <img class="reward-select-item-wechat" src="/images/wechat.png" alt="微信">
+                            </label>
+                        
+                        
+                            <label class="reward-select-item" data-id="alipay" data-alipay="/images/alipay_code.jpg">
+                                <img class="reward-select-item-alipay" src="/images/alipay.png" alt="支付宝">
+                            </label>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="post-nav layout-flex">
+            <div class="post-prev post-nav-item">
+                
+                    <a href="/2018/06/22/始于颜值，终于才华 — 打造iTerm终端利器/" title="始于颜值，终于才华 — 打造iTerm终端利器">
+                        <i class="iconfont">&#xe60f;</i>
+                        始于颜值，终于才华 — 打造iTerm终端利器
+                    </a>
+                
+            </div>
+            <div class="post-next post-nav-item">
+                
+            </div>
+        </div>
+    </div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<div id="vcomments"></div>
+<script>
+    new Valine({
+        el: '#vcomments',
+        appId: 'wtJpPCFTapMP0bD2NRIJTS4m-gzGzoHsz',
+        appKey: 'pl9EsSB2Q3cAn2qi834I12tJ',
+        notify:false, 
+        verify:false, 
+        avatar:'mm', 
+        placeholder: '谈天说地',
+    })
+</script>
+</article>
+                <footer class="footer ">
+    <div class="container">
+        <p>
+            © 2019 JeanwayHwang All Rights Reserved  | 
+            <span id="busuanzi_container_site_uv">访客数：<span id="busuanzi_value_site_uv"></span> | </span>
+            <span id="busuanzi_container_site_pv"> 浏览量：<span id="busuanzi_value_site_pv"></span> | </span>
+            赣ICP备19005844号
+        </p>
+    </div>
+    <script type="text/javascript">
+        var cnzz_s_tag = document.createElement('script');
+        cnzz_s_tag.type = 'text/javascript';
+        cnzz_s_tag.async = true;
+        cnzz_s_tag.charset = 'utf-8';
+        cnzz_s_tag.src = 'https://w.cnzz.com/c.php?id=1277362501&async=1';
+        var root_s = document.getElementsByTagName('script')[0];
+        root_s.parentNode.insertBefore(cnzz_s_tag, root_s);
+    </script>
+</footer>
+            </div>
+        </div>
+        <script type="text/javascript" src="/js/jquery.min.js"></script>
+<script type="text/javascript" src="/js/main.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+    </body>
+</html>
